@@ -1,0 +1,47 @@
+import random
+
+userWins = False
+tie = False
+playing = True
+computer = ["rock", "paper", "scissors"]
+userScore = 0
+computerScore = 0
+
+while playing:
+    computerMove = computer[random.randint(0, 2)]
+    print()
+
+    userMove = input("Would you like to choose [rock], [paper], or [scissors]? ")
+    if userMove == computerMove:
+        print("error")
+        tie = True
+    if computerMove == "rock":
+        if userMove == "paper":
+            userWins = True
+        if userMove == "scissors":
+            userWins = False
+    if computerMove == "paper":
+        if userMove == "rock":
+            userWins = False
+        if userMove == "scissors":
+            userWins = True
+    if computerMove == "scissors":
+        if userMove == "paper":
+            userWins = False
+        if userMove == "rock":
+            userWins = True
+
+    if tie:
+        print("It's a tie! The computer also chose " + computerMove)
+    elif userWins:
+        print("You win! The computer chose " + computerMove)
+        userScore += 1
+    elif not userWins:
+        print("You lose. The computer chose " + computerMove)
+        computerScore += 1
+    print("The score is " + str(userScore) + " to " + str(computerScore))
+    answer = input("Would you like to play again? [Y/N]")
+    if answer.lower() == "y":
+        playing = True
+    if answer.lower() == "n":
+        playing = False
